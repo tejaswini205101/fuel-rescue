@@ -55,15 +55,13 @@ document.getElementById("fuelForm").addEventListener("submit", function(e) {
   let fuelType = document.getElementById("fuelType").value;
   let amount = document.getElementById("amount").value;
 
-  let request = {
-    name: name,
-    phone: phone,
-    fuelType: fuelType,
-    amount: amount
-  };
+  let request = {name, phone, fuelType, amount};
 
-  console.log("Fuel Request:", request);
+  let requests = JSON.parse(localStorage.getItem("fuelRequests")) || [];
+  requests.push(request);
+
+  localStorage.setItem("fuelRequests", JSON.stringify(requests));
 
   document.getElementById("message").innerText =
-  "Fuel request sent successfully! 🚗⛽";
+  "Fuel request sent successfully!";
 });

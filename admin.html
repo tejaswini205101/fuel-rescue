@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Dashboard</title>
+</head>
+
+<body>
+
+<h1>Fuel Requests Dashboard</h1>
+
+<table border="1">
+<thead>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Fuel</th>
+<th>Amount</th>
+</tr>
+</thead>
+
+<tbody id="requestTable"></tbody>
+
+</table>
+
+<script>
+
+let requests = JSON.parse(localStorage.getItem("fuelRequests")) || [];
+
+let table = document.getElementById("requestTable");
+
+requests.forEach(r => {
+let row = `<tr>
+<td>${r.name}</td>
+<td>${r.phone}</td>
+<td>${r.fuelType}</td>
+<td>${r.amount}</td>
+</tr>`;
+
+table.innerHTML += row;
+});
+
+</script>
+
+</body>
+</html>
