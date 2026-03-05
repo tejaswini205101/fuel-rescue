@@ -23,7 +23,10 @@
 </table>
 
 <script>
-
+if(localStorage.getItem("role") !== "admin"){
+alert("Access denied");
+window.location.href="login.html";
+}
 let requests = JSON.parse(localStorage.getItem("fuelRequests")) || [];
 
 let table = document.getElementById("requestTable");
