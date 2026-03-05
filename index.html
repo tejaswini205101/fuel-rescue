@@ -10,8 +10,28 @@
 <h1>Fuel Rescue 🚗⛽</h1>
 <p>Emergency fuel and vehicle assistance platform.</p>
 
-<button onclick="requestFuel()">Request Fuel</button>
-<button onclick="requestMechanic()">Request Mechanic</button>
+<h2>Request Help</h2>
+
+<form>
+<label>Name:</label><br>
+<input type="text" placeholder="Enter your name"><br><br>
+
+<label>Vehicle Type:</label><br>
+<input type="text" placeholder="Bike / Car"><br><br>
+
+<label>Location:</label><br>
+<input type="text" placeholder="Enter your location"><br><br>
+
+<label>Service Needed:</label><br>
+<select>
+<option>Fuel Delivery</option>
+<option>Mechanic</option>
+<option>Tyre Repair</option>
+<option>Towing</option>
+</select><br><br>
+
+<button type="submit">Send Request</button>
+</form>
 
 <script src="script.js"></script>
 
