@@ -47,3 +47,23 @@ function findFuelStations(lat, lon) {
     });
   });
 }
+document.getElementById("fuelForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let fuelType = document.getElementById("fuelType").value;
+  let amount = document.getElementById("amount").value;
+
+  let request = {
+    name: name,
+    phone: phone,
+    fuelType: fuelType,
+    amount: amount
+  };
+
+  console.log("Fuel Request:", request);
+
+  document.getElementById("message").innerText =
+  "Fuel request sent successfully! 🚗⛽";
+});
