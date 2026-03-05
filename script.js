@@ -16,10 +16,34 @@ function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
 
-  map.setView([lat, lon], 13);
+  map.setView([lat, lon], 14);
 
   L.marker([lat, lon])
     .addTo(map)
     .bindPopup("You are here 🚗")
     .openPopup();
+
+  findFuelStations(lat, lon);
+}
+
+function findFuelStations(lat, lon) {
+  let query = `
+  [out:json];
+  node
+  ["amenity"="fuel"]
+  (around:3000,${lat},${lon});
+  out;
+  `;
+
+  let url = "https://overpass-api.de/api/interpreter?data=" + encodeURIComponent(query);
+
+  fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    data.elements.forEach(station => {
+      L.marker([station.lat, station.lon])
+        .addTo(map)
+        .bindPopup("Fuel Station ⛽");
+    });
+  });
 }
